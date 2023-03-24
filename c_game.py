@@ -1,4 +1,5 @@
 from b_player import Player
+from a_die import Die
 
 class Game:
     """Provide the structure for the turns and win condition of the game"""
@@ -8,12 +9,24 @@ class Game:
         self.PLAYER2 = Player()
         self.NAME1 = NAME1
         self.NAME2 = NAME2
-        self.TURNS = 3
+        self.TURNS = 5
+    
+
+    def playAgain(self):
+        CHOICE = input("Play Again? (Y/n)")
+        if CHOICE.upper() == "Y" or CHOICE == "":
+            self.TURNS = 5
+            self.PLAYER1.reset()
+            self.PLAYER2.reset()
+            self.run()
+        else: 
+            exit()
+
 
     def run(self):
         while self.TURNS != 0:
         # --- PLAYER 1 TURN --- #
-            print(f"{self.NAME1}'s Turn!")
+            print(f"\n{self.NAME1}'s Turn!")
             self.player_1_turn()
             print("-------------")
 
@@ -23,6 +36,7 @@ class Game:
                     self.PLAYER1.CREW = True
                     print(f"{NAME1} kidnapped {NAME2}'s crew and stole ALL the loot")
                     self.PLAYER2.setDice(3)
+                    self.PLAYER1.setDice(2) #####
                     self.PLAYER1.POINTS = self.PLAYER1.POINTS + self.PLAYER2.POINTS
                     self.PLAYER2.POINTS = 0
                     print(f"{NAME1}'s points: {self.PLAYER1.POINTS}")
@@ -31,6 +45,7 @@ class Game:
                     self.PLAYER2.CAPTAIN = False
                     self.PLAYER1.CAPTAIN = True
                     self.PLAYER2.setDice(4)
+                    self.PLAYER1.setDice(3) #####
                     print(f"{NAME1} kidnapped {NAME2}'s captain")
 
                 elif self.PLAYER2.SHIP == True:
@@ -38,12 +53,14 @@ class Game:
                     self.PLAYER1.SHIP = True
                     print(f"{NAME1} stole {NAME2}'s ship")
                     self.PLAYER2.setDice(5)
+                    self.PLAYER1.setDice(4) #####
                 self.PLAYER1.DOUBLES = False
             
             # --- PLAYER 2 TURN --- #
-            print(f"{self.NAME2}'s Turn!")
+            print(f"\n{self.NAME2}'s Turn!")
             self.player_2_turn()
             print("-------------")
+
 
             if self.PLAYER2.DOUBLES == True:
                 if self.PLAYER1.CREW == True:
@@ -52,6 +69,7 @@ class Game:
                     print(f"{NAME2} kidnapped {NAME1}'s crew and stole ALL their loot")
                 
                     self.PLAYER1.setDice(3)
+                    self.PLAYER2.setDice(2) #####
                     self.PLAYER2.POINTS = self.PLAYER1.POINTS + self.PLAYER2.POINTS
                     self.PLAYER1.POINTS = 0
                     print(f"{NAME2}'s points: {self.PLAYER2.POINTS}")
@@ -59,29 +77,36 @@ class Game:
                 elif self.PLAYER1.CAPTAIN == True:
                     self.PLAYER1.CAPTAIN = False
                     self.PLAYER2.CAPTAIN = True
-                    print(f"{NAME2} kidnapped {NAME1}'s captian")
+                    print(f"{NAME2} kidnapped {NAME1}'s captain")
                     self.PLAYER1.setDice(4)
+                    self.PLAYER2.setDice(3) #####
 
                 elif self.PLAYER1.SHIP == True:
                     self.PLAYER1.SHIP = False
                     self.PLAYER2.SHIP = True
                     print(f"{NAME2} stole {NAME1}'s ship")
                     self.PLAYER1.setDice(5)
+                    self.PLAYER2.setDice(4) #####
                 self.PLAYER2.DOUBLES = False
 
             self.TURNS -= 1
+            # -- OUTPUTS -- #
             if self.TURNS == 0:
-                print(self.PLAYER1.POINTS)
-                print(self.PLAYER2.POINTS)
+                print(f"\n{NAME1}'s points: {self.PLAYER1.POINTS}")
+                print(f"{NAME2}'s points: {self.PLAYER2.POINTS}")
+
                 if self.PLAYER1.POINTS > self.PLAYER2.POINTS:
                     print(f"{NAME1} Wins")
-                    exit()
+                    self.playAgain()
+                
                 elif self.PLAYER2.POINTS > self.PLAYER1.POINTS:
                     print(f"{NAME2} Wins")
-                    exit()
+                    self.playAgain()
+                    
                 else:
                     print("It's a tie")
-                    exit()
+                    self.playAgain()
+                    
     
     def player_1_turn(self):
         self.PLAYER1.turn()

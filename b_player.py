@@ -11,11 +11,21 @@ class Player():
         self.CREW = False
         self.ROLL = 0
         self.POINTS = 0
-        self.TURNS = 3
         self.DOUBLES = False
 
 
     # ---METHODS--- #
+    def reset(self):
+        self.DICE = [Die(), Die(), Die(), Die(), Die()]
+        self.HELD = []
+        self.ROLLED = []
+        self.SHIP = False
+        self.CAPTAIN = False
+        self.CREW = False
+        self.ROLL = 0
+        self.POINTS = 0
+        self.DOUBLES = False    
+
     def rollDice(self):
         """Roll all dice in DICE"""
 
@@ -54,7 +64,7 @@ class Player():
         # --- INPUT -- #
         
         if self.SHIP == True and self.CREW == True and self.CAPTAIN == True:
-            REROLL = input("Would you like to reroll to try and get a higher loot? (Y/n)")
+            REROLL = input("Would you like to reroll to try and get a higher loot?(Y/n)")
             #----_#
             if REROLL.upper() == "Y" or REROLL == "":
                 self.reRoll()
@@ -62,7 +72,7 @@ class Player():
                 self.rollDice()
                 self.POINTS = sum(self.ROLLED)
 
-                print(self.ROLLED)
+                print(f"Rolled Dice: {str(self.ROLLED)[1:-1]}")
                 print(f"Loot collected: {self.POINTS}")
         
         else:
