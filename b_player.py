@@ -80,7 +80,8 @@ class Player():
             if NEXT_ROUND.upper() == "Y" or NEXT_ROUND == "":
                 self.reRoll()
             else:
-                pass
+                print("you have to roll :)")
+                self.reRoll()
             
             # --- PROCESS -- #
             self.rollDice()

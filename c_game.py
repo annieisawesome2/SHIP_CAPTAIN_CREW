@@ -116,6 +116,15 @@ class Game:
    
 
 if __name__ == "__main__":
+    print('''
+Welcome to Ship, Captain, and Crew!
+Each player gets 5 rolls!
+Roll a 6 to find the ship first!
+Roll a 5 to find the captain second!
+Roll a 4 to find the crew and collect loot!
+Roll doubles of any kind to steal most recent find from opponet!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+''')
     NAME1 = input("Player 1 name: ")
     NAME2 = input("Player 2 name: ")
     GAME = Game(NAME1, NAME2)
