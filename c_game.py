@@ -13,6 +13,8 @@ class Game:
     
 
     def playAgain(self):
+        """Asking if player would like to play again
+        """
         CHOICE = input("Play Again? (Y/n)")
         if CHOICE.upper() == "Y" or CHOICE == "":
             self.TURNS = 5
@@ -24,6 +26,8 @@ class Game:
 
 
     def run(self):
+        """running the game where extension is included for players to steal if they roll doubles. 
+        """
         while self.TURNS != 0:
         # --- PLAYER 1 TURN --- #
             print(f"\n{self.NAME1}'s Turn!")
@@ -109,9 +113,13 @@ class Game:
                     
     
     def player_1_turn(self):
+        """player 1 turn
+        """
         self.PLAYER1.turn()
     
     def player_2_turn(self):
+        """Player 2 turn
+        """
         self.PLAYER2.turn()
    
 

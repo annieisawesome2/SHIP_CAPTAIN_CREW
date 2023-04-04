@@ -16,6 +16,8 @@ class Player():
 
     # ---METHODS--- #
     def reset(self):
+        """resetting all attributes to player for a new game
+        """
         self.DICE = [Die(), Die(), Die(), Die(), Die()]
         self.HELD = []
         self.ROLLED = []
@@ -35,6 +37,11 @@ class Player():
             self.ROLLED.append(DIE_NUM)
     
     def setDice(self, NUM):
+        """setting up six dice
+
+        Args:
+            NUM (_type_): _description_
+        """
         self.DICE = []
         for i in range (NUM):
             self.DICE.append(Die())
@@ -51,8 +58,9 @@ class Player():
         self.ROLLED = []
 
     def findDoubles(self):
+        """identifying doubles within a player rolled dice
+        """
         self.ROLLED.sort()
-
         for i in range (len(self.ROLLED) -1, -1, -1):
             if i != len(self.ROLLED) - 1:
                 if self.ROLLED[i] == self.ROLLED[i+1]:
