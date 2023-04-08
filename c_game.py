@@ -34,13 +34,15 @@ class Game:
             self.player_1_turn()
             print("-------------")
 
+
+            #extension of finding doubles
             if self.PLAYER1.DOUBLES == True:
                 if self.PLAYER2.CREW == True:
                     self.PLAYER2.CREW = False
                     self.PLAYER1.CREW = True
                     print(f"{NAME1} kidnapped {NAME2}'s crew and stole ALL the loot")
                     self.PLAYER2.setDice(3)
-                    self.PLAYER1.setDice(2) #####
+                    self.PLAYER1.setDice(2) 
                     self.PLAYER1.POINTS = self.PLAYER1.POINTS + self.PLAYER2.POINTS
                     self.PLAYER2.POINTS = 0
                     print(f"{NAME1}'s points: {self.PLAYER1.POINTS}")

@@ -71,9 +71,9 @@ class Player():
         """
         # --- INPUT -- #
         
-        if self.SHIP == True and self.CREW == True and self.CAPTAIN == True:
+        if self.SHIP == True and self.CREW == True and self.CAPTAIN == True: # checking if all is found
             REROLL = input("Would you like to reroll to try and get a higher loot?(Y/n)")
-            #----_#
+            
             if REROLL.upper() == "Y" or REROLL == "":
                 self.reRoll()
                 self.DICE = [Die(), Die()]
@@ -84,6 +84,7 @@ class Player():
                 print(f"Loot collected: {self.POINTS}")
         
         else:
+            # --- INPUT --- #
             NEXT_ROUND = input("Roll Dice?(Y/n) ")
             if NEXT_ROUND.upper() == "Y" or NEXT_ROUND == "":
                 self.reRoll()
@@ -95,7 +96,7 @@ class Player():
             self.rollDice()
             self.findDoubles()
 
-
+            # --- output --- #
             print(f"Rolled Dice: {str(self.ROLLED)[1:-1]}")
 
             ## checking if ship, captain, and crew is found
@@ -127,10 +128,10 @@ class Player():
 
                 #get the sum of remaining dice if ship, captain, crew found
                 self.POINTS = sum(self.ROLLED)
-                
-                # --- OUTPUT --- #
+            
                 print(f"Loot collected: {self.POINTS}")
 
+            #set amount of dice left 
             if self.SHIP == True:
                 self.DICE = [Die(), Die(), Die(), Die()]
             if self.CAPTAIN == True:
