@@ -73,7 +73,7 @@ class Game:
                     print(f"{NAME2} kidnapped {NAME1}'s crew and stole ALL their loot")
                 
                     self.PLAYER1.setDice(3)
-                    self.PLAYER2.setDice(2) #####
+                    self.PLAYER2.setDice(2) 
                     self.PLAYER2.POINTS = self.PLAYER1.POINTS + self.PLAYER2.POINTS
                     self.PLAYER1.POINTS = 0
                     print(f"{NAME2}'s points: {self.PLAYER2.POINTS}")
@@ -83,14 +83,14 @@ class Game:
                     self.PLAYER2.CAPTAIN = True
                     print(f"{NAME2} kidnapped {NAME1}'s captain")
                     self.PLAYER1.setDice(4)
-                    self.PLAYER2.setDice(3) #####
+                    self.PLAYER2.setDice(3) 
 
                 elif self.PLAYER1.SHIP == True:
                     self.PLAYER1.SHIP = False
                     self.PLAYER2.SHIP = True
                     print(f"{NAME2} stole {NAME1}'s ship")
                     self.PLAYER1.setDice(5)
-                    self.PLAYER2.setDice(4) #####
+                    self.PLAYER2.setDice(4) 
                 self.PLAYER2.DOUBLES = False
 
             self.TURNS -= 1
